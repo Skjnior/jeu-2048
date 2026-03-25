@@ -265,6 +265,7 @@ fun GameScreen(
                         }
                     }
                     // Flèches de direction toujours visibles
+                    Spacer(Modifier.height(16.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center

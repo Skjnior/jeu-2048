@@ -85,9 +85,12 @@ class SoundManager(private val context: Context) {
 
     fun playMerge() {
         if (!_soundEnabled.value) return
-        try {
-            toneGenerator?.startTone(ToneGenerator.TONE_PROP_ACK, 80)
-        } catch (_: Exception) { }
+        if (moveSoundId != 0) {
+            // Même son que le déplacement, légèrement plus fort pour la fusion
+            soundPool?.play(moveSoundId, 1f, 1f, 1, 0, 1.2f)
+        } else {
+            try { toneGenerator?.startTone(ToneGenerator.TONE_PROP_ACK, 80) } catch (_: Exception) { }
+        }
     }
 
     fun release() {
