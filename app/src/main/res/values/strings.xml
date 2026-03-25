@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">2048</string>
+    <string name="score">Score</string>
+    <string name="best">Meilleur</string>
+    <string name="new_game">Nouvelle partie</string>
+    <string name="undo">Annuler</string>
+    <string name="settings">Paramètres</string>
+    <string name="scores">Scores</string>
+    <string name="you_win">Vous avez gagné !</string>
+    <string name="game_over">Game Over</string>
+    <string name="continue_playing">Continuer</string>
+    <string name="try_again">Réessayer</string>
+</resources>

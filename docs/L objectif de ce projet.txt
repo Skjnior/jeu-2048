@@ -1,0 +1,13 @@
+L’objectif de ce projet est de concevoir et développer une version avancée du jeu 2048 sous Android.
+
+Développement en Java ou Kotlin
+Travail en trinôme (au max)
+Démo lors de la dernière séance de chaque groupe de TP
+Questions individuelles
+Rendu:
+Un rapport de 6 à 10 pages 
+Le code source de votre projet
+Date limite 12/04/2026 à 23h59.
+Évaluation:
+Démo + questions individuelles sur le code sur 12 points
+Correction du rapport sur 8 points  (page de garde, sommaire, introduction, conclusion, numérotation de page, explication du code, capture d’écran, tests, … )

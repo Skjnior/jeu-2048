@@ -1,0 +1,73 @@
+com.jeu2048.app-ui-tooling-preview-release-0 /home/junior/.gradle/caches/transforms-3/00f1881bc7a49adbce20f7b36c1f5f07/transformed/ui-tooling-preview-release/res
+com.jeu2048.app-drawerlayout-1.1.1-1 /home/junior/.gradle/caches/transforms-3/03565a2fc0c6fdb7cd7f5dc176ac1d62/transformed/drawerlayout-1.1.1/res
+com.jeu2048.app-datastore-1.0.0-2 /home/junior/.gradle/caches/transforms-3/03c8eb1b95819486b363f0fcdc45954e/transformed/datastore-1.0.0/res
+com.jeu2048.app-core-1.12.0-3 /home/junior/.gradle/caches/transforms-3/05365192e8c93a127ae620124358980f/transformed/core-1.12.0/res
+com.jeu2048.app-material-icons-extended-release-4 /home/junior/.gradle/caches/transforms-3/23f073d67c21f1b1e55bf10778d70113/transformed/material-icons-extended-release/res
+com.jeu2048.app-core-runtime-2.2.0-5 /home/junior/.gradle/caches/transforms-3/252b688098bf2657d782684bf6b37c73/transformed/core-runtime-2.2.0/res
+com.jeu2048.app-lifecycle-viewmodel-2.7.0-6 /home/junior/.gradle/caches/transforms-3/27fffcffbc8070378c9ce31fe8f59dec/transformed/lifecycle-viewmodel-2.7.0/res
+com.jeu2048.app-coordinatorlayout-1.1.0-7 /home/junior/.gradle/caches/transforms-3/2a59d275ade8115707c51800d3b23d3d/transformed/coordinatorlayout-1.1.0/res
+com.jeu2048.app-activity-compose-1.8.2-8 /home/junior/.gradle/caches/transforms-3/2c7616037ba1065851970ca14c541569/transformed/activity-compose-1.8.2/res
+com.jeu2048.app-ui-graphics-release-9 /home/junior/.gradle/caches/transforms-3/2e836bd27a45b05c99c5c66699692ae0/transformed/ui-graphics-release/res
+com.jeu2048.app-savedstate-1.2.1-10 /home/junior/.gradle/caches/transforms-3/309c05ea582d94d01c6ee988cfa77b91/transformed/savedstate-1.2.1/res
+com.jeu2048.app-fragment-ktx-1.6.2-11 /home/junior/.gradle/caches/transforms-3/330db191816c4b0bd777d3c9f4c6dbb8/transformed/fragment-ktx-1.6.2/res
+com.jeu2048.app-customview-poolingcontainer-1.0.0-12 /home/junior/.gradle/caches/transforms-3/33d77efa15d2e2613ac115a20b5c6307/transformed/customview-poolingcontainer-1.0.0/res
+com.jeu2048.app-navigation-common-ktx-2.7.6-13 /home/junior/.gradle/caches/transforms-3/3412b54192bdd6ac91805dd4e97be292/transformed/navigation-common-ktx-2.7.6/res
+com.jeu2048.app-material-icons-core-release-14 /home/junior/.gradle/caches/transforms-3/35792b8c50bd68dd17184e386d47d74f/transformed/material-icons-core-release/res
+com.jeu2048.app-foundation-layout-release-15 /home/junior/.gradle/caches/transforms-3/3881b730b8445d8f96b3f83302e0b440/transformed/foundation-layout-release/res
+com.jeu2048.app-appcompat-resources-1.6.1-16 /home/junior/.gradle/caches/transforms-3/3bd65c883a3780210bdf89bcd9caf597/transformed/appcompat-resources-1.6.1/res
+com.jeu2048.app-datastore-preferences-1.0.0-17 /home/junior/.gradle/caches/transforms-3/3ca3035c3eacab8801329fdfd84187a9/transformed/datastore-preferences-1.0.0/res
+com.jeu2048.app-lifecycle-livedata-core-2.7.0-18 /home/junior/.gradle/caches/transforms-3/3dfeffd36e8b2cb5f39020000d0e42ba/transformed/lifecycle-livedata-core-2.7.0/res
+com.jeu2048.app-lifecycle-viewmodel-compose-2.7.0-19 /home/junior/.gradle/caches/transforms-3/469ffc9edc2bae9ad6983c255714c7d0/transformed/lifecycle-viewmodel-compose-2.7.0/res
+com.jeu2048.app-lifecycle-runtime-ktx-2.7.0-20 /home/junior/.gradle/caches/transforms-3/4aae9911e679b41eaa6b5a36e359b947/transformed/lifecycle-runtime-ktx-2.7.0/res
+com.jeu2048.app-annotation-experimental-1.3.0-21 /home/junior/.gradle/caches/transforms-3/4bb8ee7f70c022af2367fb6ac38ea29c/transformed/annotation-experimental-1.3.0/res
+com.jeu2048.app-lifecycle-viewmodel-savedstate-2.7.0-22 /home/junior/.gradle/caches/transforms-3/5534b4ac55b208a1b05072588e5f5672/transformed/lifecycle-viewmodel-savedstate-2.7.0/res
+com.jeu2048.app-lifecycle-runtime-2.7.0-23 /home/junior/.gradle/caches/transforms-3/56a17571f823274c2af15e7dde5c3b9a/transformed/lifecycle-runtime-2.7.0/res
+com.jeu2048.app-constraintlayout-2.1.4-24 /home/junior/.gradle/caches/transforms-3/57b4b9083cd9037ee5d1cd7ce1f14350/transformed/constraintlayout-2.1.4/res
+com.jeu2048.app-ui-unit-release-25 /home/junior/.gradle/caches/transforms-3/57c3b5fc9a3c51299dec436abe1abcde/transformed/ui-unit-release/res
+com.jeu2048.app-appcompat-1.6.1-26 /home/junior/.gradle/caches/transforms-3/5c5f7c6de7640bef4d5fdbb070566b52/transformed/appcompat-1.6.1/res
+com.jeu2048.app-runtime-release-27 /home/junior/.gradle/caches/transforms-3/60472ecfab6fc442db4aad70172dfdf5/transformed/runtime-release/res
+com.jeu2048.app-sqlite-framework-2.4.0-28 /home/junior/.gradle/caches/transforms-3/6295552184921b12935fe6393906872f/transformed/sqlite-framework-2.4.0/res
+com.jeu2048.app-navigation-runtime-2.7.6-29 /home/junior/.gradle/caches/transforms-3/666b1c44f39e17184e7c2ad61bacd14f/transformed/navigation-runtime-2.7.6/res
+com.jeu2048.app-sqlite-2.4.0-30 /home/junior/.gradle/caches/transforms-3/6728ff84a12097cb2075f97adb509f3b/transformed/sqlite-2.4.0/res
+com.jeu2048.app-viewpager2-1.0.0-31 /home/junior/.gradle/caches/transforms-3/6aad382154bcce11db3751d65b662e01/transformed/viewpager2-1.0.0/res
+com.jeu2048.app-room-ktx-2.6.1-32 /home/junior/.gradle/caches/transforms-3/6b881cca6159bc416e48bf3e46349dc1/transformed/room-ktx-2.6.1/res
+com.jeu2048.app-fragment-1.6.2-33 /home/junior/.gradle/caches/transforms-3/6de0cef2b87a23c35cbe7687ae5d98c9/transformed/fragment-1.6.2/res
+com.jeu2048.app-profileinstaller-1.3.0-34 /home/junior/.gradle/caches/transforms-3/711a527c07c5d7f146ab93115698532f/transformed/profileinstaller-1.3.0/res
+com.jeu2048.app-foundation-release-35 /home/junior/.gradle/caches/transforms-3/71e7d6310616234a71c0b43c8e9c915f/transformed/foundation-release/res
+com.jeu2048.app-material3-1.1.2-36 /home/junior/.gradle/caches/transforms-3/746a57b2d2f2f8e26086c184d66ebedf/transformed/material3-1.1.2/res
+com.jeu2048.app-navigation-common-2.7.6-37 /home/junior/.gradle/caches/transforms-3/79d2cf1c4dfd72cab41f74519ca9f08e/transformed/navigation-common-2.7.6/res
+com.jeu2048.app-ui-util-release-38 /home/junior/.gradle/caches/transforms-3/7c2c7002dd2fa79d113828c324f56926/transformed/ui-util-release/res
+com.jeu2048.app-lifecycle-livedata-ktx-2.7.0-39 /home/junior/.gradle/caches/transforms-3/7e0d1575f1044c6e0b915eace251405b/transformed/lifecycle-livedata-ktx-2.7.0/res
+com.jeu2048.app-material-ripple-release-40 /home/junior/.gradle/caches/transforms-3/7e7edeaa79877c3ef38c21c28a9e8550/transformed/material-ripple-release/res
+com.jeu2048.app-animation-core-release-41 /home/junior/.gradle/caches/transforms-3/837f638ab934d5ff98fb8e83d8c76bb6/transformed/animation-core-release/res
+com.jeu2048.app-runtime-saveable-release-42 /home/junior/.gradle/caches/transforms-3/8c19fb65d7610e945877a11b4b6057e6/transformed/runtime-saveable-release/res
+com.jeu2048.app-recyclerview-1.1.0-43 /home/junior/.gradle/caches/transforms-3/8d6b537a1d0fb58ada235dca5361a71b/transformed/recyclerview-1.1.0/res
+com.jeu2048.app-emoji2-views-helper-1.4.0-44 /home/junior/.gradle/caches/transforms-3/8e32564e435139f86e36c6c060895572/transformed/emoji2-views-helper-1.4.0/res
+com.jeu2048.app-animation-release-45 /home/junior/.gradle/caches/transforms-3/8e4cc46ddbdf577f094185ae591707e9/transformed/animation-release/res
+com.jeu2048.app-activity-ktx-1.8.2-46 /home/junior/.gradle/caches/transforms-3/904b63528a5c0793d2b6fe10e89097a6/transformed/activity-ktx-1.8.2/res
+com.jeu2048.app-navigation-compose-2.7.6-47 /home/junior/.gradle/caches/transforms-3/9e6c122416f2ad473d91677dbc7e9236/transformed/navigation-compose-2.7.6/res
+com.jeu2048.app-material-release-48 /home/junior/.gradle/caches/transforms-3/a203bdb07cabbac4858cca97a7bd5dc7/transformed/material-release/res
+com.jeu2048.app-cardview-1.0.0-49 /home/junior/.gradle/caches/transforms-3/a2d39ed21832222316a11332697b24ff/transformed/cardview-1.0.0/res
+com.jeu2048.app-core-ktx-1.12.0-50 /home/junior/.gradle/caches/transforms-3/acdb17279b5f376ade4cda4554d3f1a6/transformed/core-ktx-1.12.0/res
+com.jeu2048.app-lifecycle-process-2.7.0-51 /home/junior/.gradle/caches/transforms-3/b5aa617bebe5bc4c2ae6066dd8ccfdbb/transformed/lifecycle-process-2.7.0/res
+com.jeu2048.app-ui-text-release-52 /home/junior/.gradle/caches/transforms-3/b84b6816322a699ac20c507ef93555d1/transformed/ui-text-release/res
+com.jeu2048.app-lifecycle-viewmodel-ktx-2.7.0-53 /home/junior/.gradle/caches/transforms-3/bb15a68eaa27a702c74c411b29cd3dab/transformed/lifecycle-viewmodel-ktx-2.7.0/res
+com.jeu2048.app-ui-geometry-release-54 /home/junior/.gradle/caches/transforms-3/bd5c9f993632cc540e855308ce66b298/transformed/ui-geometry-release/res
+com.jeu2048.app-room-runtime-2.6.1-55 /home/junior/.gradle/caches/transforms-3/c2cd43fde83dd9a1a88da93eb036147e/transformed/room-runtime-2.6.1/res
+com.jeu2048.app-navigation-runtime-ktx-2.7.6-56 /home/junior/.gradle/caches/transforms-3/c509141ace90c6cd6bd76642cfe2cf8f/transformed/navigation-runtime-ktx-2.7.6/res
+com.jeu2048.app-material-1.11.0-57 /home/junior/.gradle/caches/transforms-3/cac83076d76b42ce7a57dce6976e60b0/transformed/material-1.11.0/res
+com.jeu2048.app-lifecycle-livedata-core-ktx-2.7.0-58 /home/junior/.gradle/caches/transforms-3/d64b0c791d6e535a5ddaa802b13ee659/transformed/lifecycle-livedata-core-ktx-2.7.0/res
+com.jeu2048.app-ui-release-59 /home/junior/.gradle/caches/transforms-3/d7151ead860fb715268dd1e7fcd32a88/transformed/ui-release/res
+com.jeu2048.app-lifecycle-livedata-2.7.0-60 /home/junior/.gradle/caches/transforms-3/d967a84d41ba3aa022a0892df2e835c1/transformed/lifecycle-livedata-2.7.0/res
+com.jeu2048.app-activity-1.8.2-61 /home/junior/.gradle/caches/transforms-3/e013323023ae21a52cd28e6dfc69827b/transformed/activity-1.8.2/res
+com.jeu2048.app-savedstate-ktx-1.2.1-62 /home/junior/.gradle/caches/transforms-3/e212d6daf7437ae4cee342febb5553a2/transformed/savedstate-ktx-1.2.1/res
+com.jeu2048.app-emoji2-1.4.0-63 /home/junior/.gradle/caches/transforms-3/f7d9aa43faef085969bbf2dcba7942d0/transformed/emoji2-1.4.0/res
+com.jeu2048.app-startup-runtime-1.1.1-64 /home/junior/.gradle/caches/transforms-3/f8cb9787eceb83514347ac70f11d88ce/transformed/startup-runtime-1.1.1/res
+com.jeu2048.app-transition-1.2.0-65 /home/junior/.gradle/caches/transforms-3/fa410d01724addcdeb2a94f03df651f6/transformed/transition-1.2.0/res
+com.jeu2048.app-pngs-66 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/build/generated/res/pngs/debug
+com.jeu2048.app-resValues-67 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/build/generated/res/resValues/debug
+com.jeu2048.app-packageDebugResources-68 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.jeu2048.app-packageDebugResources-69 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.jeu2048.app-merged_res-70 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/build/intermediates/merged_res/debug
+com.jeu2048.app-debug-71 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/src/debug/res
+com.jeu2048.app-main-72 /home/junior/Documents/Rochelle/Dev smartphone/Jeu_mobile/app/src/main/res

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#FF6750A4</color>
+    <color name="primary_dark">#FF4A3D7A</color>
+    <color name="accent">#FFE8B4B8</color>
+    <color name="background_light">#FFF8F5F0</color>
+    <color name="background_dark">#FF1A1A2E</color>
+    <color name="surface_tile_empty">#3D3D5C</color>
+    <color name="tile_2">#FFEEE4DA</color>
+    <color name="tile_4">#FFEDE0C8</color>
+    <color name="tile_8">#FFF2B179</color>
+    <color name="tile_16">#FFF59563</color>
+    <color name="tile_32">#FFF67C5F</color>
+    <color name="tile_64">#FFF65E3B</color>
+    <color name="tile_128">#FFEDCF72</color>
+    <color name="tile_256">#FFEDCC61</color>
+    <color name="tile_512">#FFEDC850</color>
+    <color name="tile_1024">#FFEDC53F</color>
+    <color name="tile_2048">#FFEDC22E</color>
+    <color name="tile_super">#FF3C3A32</color>
+</resources>
