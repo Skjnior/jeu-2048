@@ -4,6 +4,38 @@ Projet Android (Kotlin / Jetpack Compose) du célèbre jeu 2048, développé dan
 
 ---
 
+## 📸 Captures d'écran
+
+### Écran de jeu
+
+| Thème Clair | Thème Sombre | Thème Coloré |
+|:-----------:|:------------:|:------------:|
+| ![Jeu clair](screenshots/Screenshot_20260325_235743.png) | ![Jeu sombre](screenshots/Screenshot_20260326_000002.png) | ![Jeu coloré](screenshots/Screenshot_20260326_000115.png) |
+
+### Surbrillance directionnelle (ligne active pendant un glissement)
+
+![Surbrillance](screenshots/Screenshot_20260325_235838.png)
+
+### Écran Paramètres
+
+| Thème Clair | Thème Sombre | Thème Coloré |
+|:-----------:|:------------:|:------------:|
+| ![Paramètres clair](screenshots/Screenshot_20260325_235816.png) | ![Paramètres sombre](screenshots/Screenshot_20260325_235911.png) | ![Paramètres coloré](screenshots/Screenshot_20260326_000045.png) |
+
+### Écran Classement (Meilleurs scores)
+
+| Thème Clair | Thème Sombre |
+|:-----------:|:------------:|
+| ![Classement clair](screenshots/Screenshot_20260325_235804.png) | ![Classement sombre](screenshots/Screenshot_20260326_000013.png) |
+
+### Tutoriel ("Comment jouer")
+
+| Thème Clair | Thème Sombre | Thème Coloré |
+|:-----------:|:------------:|:------------:|
+| ![Tutoriel clair](screenshots/Screenshot_20260325_235945.png) | ![Tutoriel sombre](screenshots/Screenshot_20260325_235934.png) | ![Tutoriel coloré](screenshots/Screenshot_20260326_000057.png) |
+
+---
+
 ## 🚀 Ouvrir le projet
 
 1. Ouvrir **Android Studio** (version récente avec support SDK 34+).

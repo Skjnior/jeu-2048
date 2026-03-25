@@ -1,5 +1,11 @@
 # Guide Complet du Jeu 2048 — Application Android
 
+> **Aperçu de l'application**
+>
+> | Thème Clair | Thème Sombre | Thème Coloré |
+> |:-----------:|:------------:|:------------:|
+> | ![Jeu clair](../screenshots/Screenshot_20260325_235743.png) | ![Jeu sombre](../screenshots/Screenshot_20260326_000002.png) | ![Jeu coloré](../screenshots/Screenshot_20260326_000115.png) |
+
 ## Sommaire
 
 1. [Principe du jeu](#1-principe-du-jeu)
@@ -282,6 +288,11 @@ En bas de l'écran, 4 boutons circulaires correspondant aux 4 directions sont di
 
 Ces boutons s'illuminent (changement de couleur) au moment du clic pour confirmer l'action.
 
+> **Exemple — boutons flèches illuminés après appui (thème coloré)**
+>
+> ![Flèches illuminées](../screenshots/Screenshot_20260326_000115.png)
+
+
 ### Boutons du header
 
 | Bouton | Action |
@@ -300,6 +311,11 @@ Ces boutons s'illuminent (changement de couleur) au moment du clic pour confirme
 - Dès que le doigt commence à glisser horizontalement, la **ligne exacte** sous le doigt s'illumine en **jaune-or translucide**.
 - Dès que le doigt commence à glisser verticalement, la **colonne exacte** sous le doigt s'illumine en **jaune-or translucide**.
 - Quand le doigt se lève, la surbrillance disparaît immédiatement.
+
+> **Capture — Surbrillance de ligne pendant un glissement (ligne 2 en jaune)**
+>
+> ![Surbrillance](../screenshots/Screenshot_20260325_235838.png)
+
 
 ### Après un appui sur un bouton flèche
 
@@ -367,6 +383,14 @@ Accès : bouton ⚙️ dans le header ou via la navigation.
 | Voir le classement | Lien | Ouvre l'écran des scores |
 | Réinitialiser le classement | Action | Supprime tous les scores enregistrés |
 
+> **Captures — Écran Paramètres (haut et bas) en thème Clair et Sombre**
+>
+> | Thème Clair | Thème Sombre | Thème Coloré |
+> |:-----------:|:------------:|:------------:|
+> | ![Paramètres clair](../screenshots/Screenshot_20260325_235816.png) | ![Paramètres sombre](../screenshots/Screenshot_20260325_235911.png) | ![Paramètres coloré](../screenshots/Screenshot_20260326_000045.png) |
+> | ![Paramètres clair bas](../screenshots/Screenshot_20260325_235822.png) | ![Paramètres sombre bas](../screenshots/Screenshot_20260325_235915.png) | |
+
+
 ---
 
 ## 17. Sauvegarde automatique
@@ -409,6 +433,13 @@ Les scores sont persistants — ils survivent à la fermeture complète de l'app
 
 **Réinitialiser** : **Paramètres → Réinitialiser le classement** supprime tous les scores enregistrés.
 
+> **Captures — Écran Classement**
+>
+> | Thème Clair | Thème Sombre |
+> |:-----------:|:------------:|
+> | ![Classement clair](../screenshots/Screenshot_20260325_235804.png) | ![Classement sombre](../screenshots/Screenshot_20260326_000013.png) |
+
+
 ---
 
 ## 19. Statistiques
@@ -439,6 +470,13 @@ Une boîte de dialogue s'affiche avec les règles essentielles du jeu :
 - Principe du glissement
 - Objectif (atteindre 2048)
 - Règle de fusion
+
+> **Captures — Tutoriel en 3 thèmes**
+>
+> | Thème Clair | Thème Sombre | Thème Coloré |
+> |:-----------:|:------------:|:------------:|
+> | ![Tutoriel clair](../screenshots/Screenshot_20260325_235945.png) | ![Tutoriel sombre](../screenshots/Screenshot_20260325_235934.png) | ![Tutoriel coloré](../screenshots/Screenshot_20260326_000057.png) |
+
 
 ---
 
