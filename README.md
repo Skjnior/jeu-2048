@@ -34,6 +34,12 @@ Projet Android (Kotlin / Jetpack Compose) du célèbre jeu 2048, développé dan
 |:-----------:|:------------:|:------------:|
 | ![Tutoriel clair](screenshots/Screenshot_20260325_235945.png) | ![Tutoriel sombre](screenshots/Screenshot_20260325_235934.png) | ![Tutoriel coloré](screenshots/Screenshot_20260326_000057.png) |
 
+### 🏆 Écran de victoire (2048 atteint !)
+
+| Vue de la victoire | Grille finale |
+|:------------------:|:-------------:|
+| ![Victoire 1](screenshots/Screenshot_20260326_113110.png) | ![Victoire 2](screenshots/Screenshot_20260326_113127.png) |
+
 ---
 
 ## 🚀 Ouvrir le projet
