@@ -116,8 +116,12 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun acceptWin() {
-        engine()?.acceptWin()
-        viewModelScope.launch { settingsPrefs.incrementGamesWon() }
+        val e = engine() ?: return
+        e.acceptWin()
+        viewModelScope.launch {
+            settingsPrefs.incrementGamesWon()
+            scoreDao.insert(ScoreEntity(score = e.score.value, gridSize = settings.value.gridSize))
+        }
         saveState()
     }
 
