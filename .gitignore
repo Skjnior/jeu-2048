@@ -1,0 +1,36 @@
+# ── Fichiers locaux (propres à chaque machine) ──────────────────
+local.properties
+*.local.properties
+
+# ── Gradle (généré automatiquement à chaque build) ───────────────
+.gradle/
+build/
+**/build/
+
+# ── Android Studio / IntelliJ IDEA ───────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# ── VS Code ───────────────────────────────────────────────────────
+.vscode/
+
+# ── Clés & signatures (ne JAMAIS envoyer en ligne) ───────────────
+*.jks
+*.keystore
+*.p12
+
+# ── Fichiers OS ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Logs & temporaires ────────────────────────────────────────────
+*.log
+tmp/
