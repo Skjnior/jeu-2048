@@ -21,6 +21,8 @@ class SoundManager(private val context: Context) {
     private var mediaPlayer: MediaPlayer? = null
     private var soundPool: android.media.SoundPool? = null
     private var moveSoundId: Int = 0
+    private var winSoundId: Int = 0
+    private var loseSoundId: Int = 0
 
     init {
         try {
@@ -36,6 +38,14 @@ class SoundManager(private val context: Context) {
             val resIdMove = context.resources.getIdentifier("move", "raw", context.packageName)
             if (resIdMove != 0) {
                 moveSoundId = soundPool?.load(context, resIdMove, 1) ?: 0
+            }
+            val resIdWin = context.resources.getIdentifier("win", "raw", context.packageName)
+            if (resIdWin != 0) {
+                winSoundId = soundPool?.load(context, resIdWin, 1) ?: 0
+            }
+            val resIdLose = context.resources.getIdentifier("lose", "raw", context.packageName)
+            if (resIdLose != 0) {
+                loseSoundId = soundPool?.load(context, resIdLose, 1) ?: 0
             }
         } catch (_: Exception) { }
     }
@@ -90,6 +100,20 @@ class SoundManager(private val context: Context) {
             soundPool?.play(moveSoundId, 1f, 1f, 1, 0, 1.2f)
         } else {
             try { toneGenerator?.startTone(ToneGenerator.TONE_PROP_ACK, 80) } catch (_: Exception) { }
+        }
+    }
+
+    fun playWin() {
+        if (!_soundEnabled.value) return
+        if (winSoundId != 0) {
+            soundPool?.play(winSoundId, 1f, 1f, 1, 0, 1f)
+        }
+    }
+
+    fun playLose() {
+        if (!_soundEnabled.value) return
+        if (loseSoundId != 0) {
+            soundPool?.play(loseSoundId, 1f, 1f, 1, 0, 1f)
         }
     }
 

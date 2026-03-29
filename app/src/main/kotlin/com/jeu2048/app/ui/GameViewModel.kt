@@ -164,6 +164,14 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch { settingsPrefs.setMusicEnabled(enabled) }
     }
 
+    fun playWinSound() {
+        soundManager.playWin()
+    }
+
+    fun playLoseSound() {
+        soundManager.playLose()
+    }
+
     fun resetScores() {
         viewModelScope.launch { scoreDao.deleteAll() }
     }

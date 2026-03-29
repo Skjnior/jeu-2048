@@ -104,8 +104,14 @@ fun AppNav(viewModel: GameViewModel) {
                     onUndo = { viewModel.undo() },
                     onOpenSettings = { navController.navigate("settings") },
                     onOpenScores = { navController.navigate("scores") },
-                    onWin = { showWinDialog = true },
-                    onGameOver = { showGameOverDialog = true }
+                    onWin = {
+                        viewModel.playWinSound()
+                        showWinDialog = true
+                    },
+                    onGameOver = {
+                        viewModel.playLoseSound()
+                        showGameOverDialog = true
+                    }
                 )
             }
             composable("settings") {
