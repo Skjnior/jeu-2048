@@ -42,6 +42,8 @@ import com.jeu2048.app.ui.screens.TutorialDialog
 import androidx.compose.material3.MaterialTheme
 import com.jeu2048.app.ui.theme.Jeu2048Theme
 import kotlinx.coroutines.launch
+import com.jeu2048.app.ui.screens.MultiplayerScreen
+import com.jeu2048.app.ui.screens.ChallengeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,6 +106,7 @@ fun AppNav(viewModel: GameViewModel) {
                     onUndo = { viewModel.undo() },
                     onOpenSettings = { navController.navigate("settings") },
                     onOpenScores = { navController.navigate("scores") },
+                    onShare = { viewModel.shareScore(it) },
                     onWin = {
                         viewModel.playWinSound()
                         showWinDialog = true
@@ -130,6 +133,14 @@ fun AppNav(viewModel: GameViewModel) {
                         }
                     },
                     onOpenScores = { navController.navigate("scores") },
+                    onOpenMultiplayer = { 
+                        viewModel.startMultiplayer()
+                        navController.navigate("multiplayer") 
+                    },
+                    onOpenChallenge = {
+                        viewModel.startDailyChallenge()
+                        navController.navigate("challenge")
+                    },
                     onShowTutorial = { showTutorialDialog = true },
                     onBack = { navController.popBackStack() }
                 )
@@ -138,6 +149,29 @@ fun AppNav(viewModel: GameViewModel) {
                 ScoresScreen(
                     scores = topScores,
                     themeIndex = settings.theme,
+                    onBack = { navController.popBackStack() }
+                )
+            }
+            composable("multiplayer") {
+                val p1Engine by viewModel.player1Engine.collectAsState()
+                val p2Engine by viewModel.player2Engine.collectAsState()
+                MultiplayerScreen(
+                    p1Engine = p1Engine,
+                    p2Engine = p2Engine,
+                    themeIndex = settings.theme,
+                    onMoveP1 = { viewModel.movePlayer1(it) },
+                    onMoveP2 = { viewModel.movePlayer2(it) },
+                    onBack = { navController.popBackStack() }
+                )
+            }
+            composable("challenge") {
+                val engine by viewModel.challengeEngine.collectAsState()
+                val timeLeft by viewModel.timeLeft.collectAsState()
+                ChallengeScreen(
+                    engine = engine,
+                    timeLeft = timeLeft,
+                    themeIndex = settings.theme,
+                    onMove = { engine?.move(it) },
                     onBack = { navController.popBackStack() }
                 )
             }
@@ -176,7 +210,7 @@ fun AppNav(viewModel: GameViewModel) {
             },
             dismissButton = {
                 Button(onClick = {
-                    viewModel.shareScore()
+                    viewModel.shareScore(null)
                     showGameOverDialog = false
                 }) { Text("Partager le score") }
             }

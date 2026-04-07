@@ -49,6 +49,8 @@ fun SettingsScreen(
     onMusicChange: (Boolean) -> Unit,
     onResetScores: () -> Unit,
     onOpenScores: () -> Unit,
+    onOpenMultiplayer: () -> Unit,
+    onOpenChallenge: () -> Unit,
     onShowTutorial: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -87,6 +89,21 @@ fun SettingsScreen(
                 .verticalScroll(scroll)
                 .padding(16.dp)
         ) {
+            // ─ Modes de Jeu ───────────────────────────────
+            SectionTitle("Modes de Jeu")
+            SettingRow(
+                label = "Mode Multijoueur (2 joueurs)",
+                onClick = onOpenMultiplayer,
+                trailing = { Text("Lancer →", color = cs.primary, fontWeight = FontWeight.Medium) }
+            )
+            Divider(color = cs.surfaceVariant, thickness = 1.dp)
+            SettingRow(
+                label = "Défi Quotidien (Temps limité)",
+                onClick = onOpenChallenge,
+                trailing = { Text("Défier →", color = cs.primary, fontWeight = FontWeight.Medium) }
+            )
+            Divider(color = cs.surfaceVariant, thickness = 1.dp)
+
             // ─ Aide ─────────────────────────────────────────
             SectionTitle("Aide")
             SettingRow(

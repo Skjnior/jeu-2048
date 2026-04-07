@@ -73,8 +73,10 @@ Projet Android (Kotlin / Jetpack Compose) du célèbre jeu 2048, développé dan
 | Animations | Activation/désactivation des transitions |
 | Sons | Son de déplacement (MP3) + musique de fond en boucle |
 | Statistiques | Parties jouées, gagnées, perdues |
-| Partage | Partage du score depuis la boîte de dialogue Game Over |
-| Tutoriel | Règles du jeu (Paramètres → « Règles du jeu ») |
+| Partage d'image | Partage du score + **capture d'écran de la grille** (PNG via FileProvider) |
+| Tutoriel animé | Règles du jeu avec **démo interactive animée** |
+| Multijoueur | Mode 2 joueurs en **face-à-face sur le même appareil** |
+| Défi Quotidien | Atteindre 2048 en **temps limité** sur une grille identique pour tous |
 | Annuler | Bouton Undo (jusqu'à 10 coups en arrière) |
 | Surbrillance directionnelle | La ligne/colonne active s'illumine en temps réel pendant un glissement |
 
@@ -95,13 +97,17 @@ app/src/main/kotlin/com/jeu2048/app/
 │   ├── ScoreDatabase.kt    — Base de données Room
 │   └── ScoreEntity.kt      — Entité Room (score + timestamp)
 ├── ui/
-│   ├── GameViewModel.kt    — ViewModel (états, logique UI, sons)
-│   ├── ShareHelper.kt      — Partage du score
+│   ├── GameViewModel.kt    — ViewModel central (logique UI, sons, multi, défi)
+│   ├── ShareHelper.kt      — Génération et partage d'image (PNG)
+│   ├── components/
+│   │   └── GameComponents.kt — Composants UI réutilisables (Grille, Tuiles, Score)
 │   ├── screens/
-│   │   ├── GameScreen.kt   — Écran de jeu principal
-│   │   ├── SettingsScreen.kt — Écran Paramètres
+│   │   ├── GameScreen.kt   — Écran de jeu principal (avec capture d'écran)
+│   │   ├── SettingsScreen.kt — Écran Paramètres (accès aux nouveaux modes)
 │   │   ├── ScoresScreen.kt — Écran Classement
-│   │   └── TutorialDialog.kt — Dialogue tutoriel
+│   │   ├── MultiplayerScreen.kt — Écran Mode 2 joueurs (Face-à-face)
+│   │   ├── ChallengeScreen.kt — Écran Défi Quotidien (Chronométré)
+│   │   └── TutorialDialog.kt — Dialogue tutoriel avec démo animée
 │   └── theme/
 │       ├── AppTheme.kt     — Thème Material3
 │       └── Theme.kt        — Couleurs des tuiles (3 thèmes × 13 valeurs)

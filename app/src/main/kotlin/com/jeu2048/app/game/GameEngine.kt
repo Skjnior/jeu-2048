@@ -4,11 +4,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlin.random.Random
+import java.util.Random as JavaRandom
 
 /**
  * Moteur de jeu 2048 : grille NxN, déplacements, fusions, score, victoire/défaite.
  */
 class GameEngine(private val gridSize: Int = 4) {
+
+    private var random: Random = Random.Default
 
     private val _grid = MutableStateFlow(Array(gridSize) { IntArray(gridSize) })
     val grid: StateFlow<Array<IntArray>> = _grid.asStateFlow()
@@ -179,8 +182,13 @@ class GameEngine(private val gridSize: Int = 4) {
             for (c in 0 until gridSize)
                 if (g[r][c] == 0) empty.add(r to c)
         if (empty.isEmpty()) return
-        val (r, c) = empty.random()
-        g[r][c] = if (Random.nextFloat() < 0.9f) 2 else 4
+        val (r, c) = empty.random(random)
+        g[r][c] = if (random.nextFloat() < 0.9f) 2 else 4
+    }
+
+    fun startSeededGame(seed: Long) {
+        random = Random(seed)
+        startNewGame()
     }
 
     private fun canMove(g: Array<IntArray>): Boolean {

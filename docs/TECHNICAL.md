@@ -10,6 +10,8 @@
 7. [Gestion des sons](#7-gestion-des-sons)
 8. [Navigation](#8-navigation)
 9. [Flux de données complet](#9-flux-de-données-complet)
+10. [Modes avancés](#10-modes-avancés)
+11. [Capture et Partage](#11-capture-et-partage)
 
 ---
 
@@ -22,9 +24,9 @@ Couche UI (Compose)
         ↕ observe StateFlow / collectAsState()
 Couche ViewModel (GameViewModel)
         ↕ coroutines / suspend functions
-Couche Data (Room + DataStore)
+Couche Data (Room + DataStore + FileProvider)
         ↕
-Couche Game Logic (GameEngine)
+Couche Game Logic (GameEngine × 3)
 ```
 
 **Technologies utilisées :**
@@ -48,6 +50,10 @@ Couche Game Logic (GameEngine)
 class GameEngine(private val gridSize: Int = 4)
 ```
 La grille est configurable de **3×3 à 6×6**.
+
+### Mode Aléatoire vs Seedé
+- **`startNewGame()`** : Utilise `Random.Default` pour une expérience imprévisible.
+- **`startSeededGame(seed: Long)`** : Utilise une instance de `Random(seed)` dédiée. Utilisé pour le **Défi Quotidien**, garantissant que tous les joueurs reçoivent les mêmes tuiles à chaque coup pour une date donnée.
 
 ### États internes (StateFlow)
 
@@ -145,6 +151,9 @@ val topScores: StateFlow<List<ScoreEntity>> // classement
 | `setSoundEnabled(b)` | Active/désactive les sons |
 | `setMusicEnabled(b)` | Démarre/arrête la musique de fond |
 | `saveStateOnPause()` | Sauvegarde l'état lors de la mise en pause |
+| `startMultiplayer()` | Initialise deux moteurs indépendants pour le mode PVP |
+| `startDailyChallenge()`| Initialise un moteur seedé et lance le compte à rebours |
+| `shareScore(bitmap)` | Génère et envoie l'image via ShareHelper |
 
 ---
 
@@ -177,11 +186,17 @@ val topScores: StateFlow<List<ScoreEntity>> // classement
 - Switchs pour animations, sons et musique.
 - Statistiques et gestion du classement.
 
-### 5.3 ScoresScreen
+### 5.4 MultiplayerScreen (Nouveau)
+- **Split-screen** : Deux joueurs sur la même vue.
+- **Orientation** : La vue du joueur 2 est pivotée de **180°** (`graphicsLayer(rotationZ = 180f)`) pour un usage face-à-face.
+- **Indépendance** : Chaque zone de l'écran capture les gestes (`detectDragGestures`) et les transmet à son propre `GameEngine`.
 
-- AppBar marron avec bouton retour.
-- Liste `LazyColumn` avec médailles 🥇🥈🥉 pour les 3 premiers.
-- Message vide si aucun score.
+### 5.5 ChallengeScreen (Nouveau)
+- **Mode chronométré** : Affiche un compte à rebours (`timeLeft`) synchronisé avec une `Coroutine` du ViewModel.
+- **Objectif fixe** : Condition de victoire visuelle (Atteindre 2048).
+
+### 5.6 GameComponents (Reusability)
+- Extraction de `GameGrid` et `TileCell` pour permettre leur affichage dans 4 contextes différents : Jeu classique, Multijoueur, Défi, et Tutoriel Animé.
 
 ---
 
@@ -225,40 +240,19 @@ MediaPlayer ─── bg_music.mp3 ──→ lecture en boucle (volume 0.3)
 
 ---
 
-## 8. Navigation
+## 10. Modes avancés
 
-**Fichier :** `MainActivity.kt`
+### 10.1 Tutoriel Animé
+Le tutoriel n'est plus une simple liste de texte. Il inclut un `LaunchedEffect` qui boucle sur une séquence d'états de grille prédéfinis (fusion de 2+2, apparition de tuile, mouvement) pour illustrer dynamiquement les règles.
 
-Navigation avec `NavHost` et 3 routes :
-
-```
-"game"     → GameScreen
-"settings" → SettingsScreen (AppBar intégrée)
-"scores"   → ScoresScreen (AppBar intégrée)
-```
-
-Les dialogs (Victoire, Game Over, Tutoriel) sont affichés par-dessus la navigation sans changer la route.
+### 10.2 Multijoueur
+Deux instances de `GameEngine` sont maintenues en parallèle dans le `GameViewModel`. Le score final est comparé lors de la navigation retour ou lors d'un Game Over.
 
 ---
 
-## 9. Flux de données complet
+## 11. Capture et Partage
 
-```
-Utilisateur glisse le doigt
-        ↓
-GameScreen.detectDragGestures()
-        ↓ onMove(Direction)
-GameViewModel.move(direction)
-        ↓ soundManager.playMove()
-GameEngine.move(direction)
-        ↓ StateFlow<grid> mis à jour
-GameScreen recompose automatiquement
-        ↓ si fusion → soundManager.playMerge()
-        ↓ si hasWon → showWinDialog
-        ↓ si gameOver → showGameOverDialog
-        ↓
-GameViewModel sauvegarde le score (Room)
-        ↓
-ON_PAUSE → GameViewModel.saveStateOnPause()
-           → GamePreferences.saveGameState()
-```
+### Partage d'image récapitulative
+1. **Capture** : Lorsqu'un utilisateur clique sur "Partager", `GameScreen` utilise `LocalView.current` pour dessiner la vue actuelle dans un `android.graphics.Canvas` lié à un `Bitmap`.
+2. **Stockage** : Le `Bitmap` est compressé en PNG et stocké dans le dossier `cache/images/` de l'application.
+3. **Partage** : Un `content://` URI est généré via **FileProvider** (`androidx.core.content.FileProvider`) pour accorder des permissions temporaires de lecture à l'application de partage choisie (WhatsApp, Email, etc.).

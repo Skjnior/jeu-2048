@@ -1,0 +1,144 @@
+Projet
+Mohammed Islam NAAS | mohammed.naas@univ-lr.fr
+
+EU : Développement sous Smartphone
+2025/2026
+
+Projet : Développement du jeu « 2048 »
+▪ Le jeu 2048 est un puzzle numérique (addictif) qui a été créé en 2014.
+▪ Son principe est simple : le joueur déplace des tuiles numérotées sur une grille carrée (généralement 4x4)
+en les fusionnant lorsqu'elles ont la même valeur.
+▪ L’objectif est d’atteindre la tuile 2048, tout en optimisant ses déplacements pour éviter de bloquer la grille.
+
+▪ Chaque mouvement entraîne le déplacement de toutes les tuiles dans la direction choisie (haut, bas,
+gauche, droite).
+▪ Lorsqu’une tuile rencontre une autre de même valeur, elles fusionnent en une seule au même sens de
+mouvement, doublant ainsi leur valeur (exemple : 2 + 2 = 4, 4 + 4 = 8, etc.), et le résultat de l’addition est
+ajouté au score.
+▪ Après chaque mouvement, une nouvelle tuile de valeur 2 ou 4 apparaît aléatoirement sur la grille. La partie
+se termine lorsque plus aucun mouvement n'est possible.
+▪ Au démarrage de la partie, la grille est initialisée avec deux tuiles positionnées aléatoirement.
+
+2
+
+Projet : le jeu 2048
+
+3
+
+Projet : le jeu 2048
+▪ L’objectif de ce projet est de concevoir et développer une version avancée du jeu
+2048 sous Android.
+▪ Ce projet vous permettra d’appliquer plusieurs concepts clés du développement
+mobile, notamment la gestion des interfaces graphiques, la manipulation des
+événements tactiles, la persistance des données et l'ajout de fonctionnalités
+interactives.
+▪ En plus du mode classique, le jeu intégrera des fonctionnalités optionnelles
+avancées pour enrichir l’expérience utilisateur.
+
+4
+
+Projet : le jeu 2048
+2. Fonctionnalités principales
+
+2.1. Jeu de base
+▪ Implémentation de la grille de jeu (4x4 par défaut) avec des tuiles dynamiques.
+
+▪ Gestion des mouvements directionnels (haut, bas, gauche, droite) via les gestes
+tactiles.
+▪ Fusion des tuiles et calcul du score.
+▪ Condition de victoire (atteindre 2048) et de défaite (plus de mouvements possibles).
+
+5
+
+Projet : le jeu 2048
+2. Fonctionnalités principales
+
+2.2. Sauvegarde et reprise de la partie
+▪ Enregistrement automatique de l’état de la grille et du score.
+
+▪ Possibilité de reprendre une partie en cours après la fermeture de l’application.
+2.3. Tableau des scores
+▪ Enregistrement des meilleurs scores dans une base de données locale.
+▪ Affichage des scores classés du plus élevé au plus bas.
+▪ Option de réinitialisation du classement.
+
+6
+
+Projet : le jeu 2048
+3. Fonctionnalités avancées (Optionnelles, à activer via un menu des paramètres)
+
+3.1. Mode multijoueur
+▪ Deux joueurs en simultané sur le même appareil avec une grille 2048 indépendante
+pour chacun.
+▪ Possibilité de s’affronter en temps limité ou jusqu'à ce qu'un joueur atteigne 2048.
+▪ Comparaison des scores à la fin de la partie.
+3.2. Personnalisation de l’interface
+▪ Thèmes visuels : choix entre plusieurs styles graphiques (clair, sombre, coloré…).
+▪ Taille de la grille : possibilité de jouer avec une grille 3x3, 4x4, 5x5 ou 6x6.
+▪ Animations : option pour activer ou désactiver les effets de transition sur les tuiles.
+
+7
+
+Projet : le jeu 2048
+3. Fonctionnalités avancées (Optionnelles, à activer via un menu des paramètres)
+
+3.3. Gestion de la musique et des sons
+▪ Intégration d’une musique de fond avec possibilité de l’activer/désactiver.
+▪ Ajout de sons pour les mouvements et les fusions de tuiles.
+3.4. Mode défi
+▪ Défis journaliers où le joueur doit atteindre un score spécifique en un temps limité.
+3.5. Intégration des statistiques de jeu
+▪ Affichage des statistiques personnelles :
+• Nombre total de parties jouées.
+• Meilleur score.
+• Nombre de parties gagnées/perdues.
+8
+
+Projet : le jeu 2048
+3. Fonctionnalités avancées (Optionnelles, à activer via un menu des paramètres)
+
+3.6. Partage des scores
+▪ Partage du score final via les réseaux sociaux ou par message.
+▪ Génération d’une image récapitulative de la partie.
+3.7. Mode tutoriel interactif
+▪ Explication des règles du jeu avec des animations interactives.
+
+9
+
+Projet modalité
+▪
+
+Développement en Java ou Kotlin
+
+▪
+
+Travail en trinôme (au max)
+
+▪
+
+Démo lors de la dernière séance de chaque groupe de TP
+➢ Questions individuelles
+
+▪
+
+Rendu:
+
+➢ Un rapport de 6 à 10 pages
+➢ Le code source de votre projet
+▪
+
+Date limite 12/04/2026 à 23h59.
+
+▪
+
+Évaluation:
+➢ Démo + questions individuelles sur le code sur 12 points
+➢ Correction du rapport sur 8 points (page de garde, sommaire, introduction, conclusion, numérotation de
+page, explication du code, capture d’écran, tests, … )
+10
+
+Bon courage!
+
+11
+
+

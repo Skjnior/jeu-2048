@@ -12,6 +12,7 @@ import com.jeu2048.app.game.GameEngine
 import com.jeu2048.app.game.GameState
 import com.jeu2048.app.sound.SoundManager
 import com.jeu2048.app.ui.ShareHelper
+import android.graphics.Bitmap
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -29,6 +30,19 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _currentEngine = MutableStateFlow<GameEngine?>(null)
     val currentEngine = _currentEngine.asStateFlow()
+
+    // Multiplayer
+    private val _player1Engine = MutableStateFlow<GameEngine?>(null)
+    val player1Engine = _player1Engine.asStateFlow()
+    private val _player2Engine = MutableStateFlow<GameEngine?>(null)
+    val player2Engine = _player2Engine.asStateFlow()
+
+    // Challenge
+    private val _challengeEngine = MutableStateFlow<GameEngine?>(null)
+    val challengeEngine = _challengeEngine.asStateFlow()
+    private val _timeLeft = MutableStateFlow(300) // 5 minutes
+    val timeLeft = _timeLeft.asStateFlow()
+    private var challengeJob: kotlinx.coroutines.Job? = null
 
     val topScores = scoreDao.getTopScores(20)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
@@ -176,13 +190,46 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch { scoreDao.deleteAll() }
     }
 
-    fun shareScore() {
+    fun shareScore(bitmap: Bitmap? = null) {
         val e = engine() ?: return
         ShareHelper.shareScore(
             getApplication(),
             e.score.value,
             e.bestScore.value,
-            settings.value.gridSize
+            settings.value.gridSize,
+            bitmap
         )
+    }
+
+    // --- Multiplayer Actions ---
+    fun startMultiplayer() {
+        _player1Engine.value = GameEngine(4).apply { startNewGame() }
+        _player2Engine.value = GameEngine(4).apply { startNewGame() }
+    }
+
+    fun movePlayer1(direction: Direction) {
+        _player1Engine.value?.move(direction)
+    }
+
+    fun movePlayer2(direction: Direction) {
+        _player2Engine.value?.move(direction)
+    }
+
+    // --- Challenge Actions ---
+    fun startDailyChallenge() {
+        challengeJob?.cancel()
+        val seed = java.time.LocalDate.now().toEpochDay()
+        val engine = GameEngine(4)
+        engine.startSeededGame(seed)
+        _challengeEngine.value = engine
+        _timeLeft.value = 300
+        
+        challengeJob = viewModelScope.launch {
+            while (_timeLeft.value > 0) {
+                kotlinx.coroutines.delay(1000)
+                _timeLeft.value -= 1
+                if (engine.hasWon.value || engine.gameOver.value) break
+            }
+        }
     }
 }
