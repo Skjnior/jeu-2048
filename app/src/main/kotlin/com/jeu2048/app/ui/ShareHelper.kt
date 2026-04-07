@@ -2,6 +2,7 @@ package com.jeu2048.app.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.ClipData
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.core.content.FileProvider
@@ -15,6 +16,7 @@ object ShareHelper {
         
         val sendIntent = Intent().apply {
             action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_SUBJECT, "Mon score au 2048")
             putExtra(Intent.EXTRA_TEXT, text)
             
             if (bitmap != null) {
@@ -23,6 +25,8 @@ object ShareHelper {
                     putExtra(Intent.EXTRA_STREAM, uri)
                     type = "image/png"
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    // Certains share sheets / apps OEM nécessitent ClipData pour afficher un aperçu
+                    clipData = ClipData.newUri(context.contentResolver, "score_2048", uri)
                 } else {
                     type = "text/plain"
                 }
@@ -33,6 +37,8 @@ object ShareHelper {
         
         val shareIntent = Intent.createChooser(sendIntent, "Partager le score")
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        // Re-propage la permission de lecture au chooser
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         context.startActivity(shareIntent)
     }
 

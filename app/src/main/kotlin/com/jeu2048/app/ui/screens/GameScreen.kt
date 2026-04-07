@@ -176,10 +176,12 @@ fun GameScreen(
                         IconButton(onClick = ::captureAndShare) {
                             Icon(Icons.Default.Share, contentDescription = "Partager", tint = cs.onSurfaceVariant)
                         }
-                        if (canUndo) {
-                            IconButton(onClick = onUndo) {
-                                Icon(Icons.Default.ArrowBack, contentDescription = "Annuler", tint = cs.onSurfaceVariant)
-                            }
+                        IconButton(onClick = onUndo, enabled = canUndo) {
+                            Icon(
+                                Icons.Default.ArrowBack,
+                                contentDescription = "Annuler",
+                                tint = if (canUndo) cs.onSurfaceVariant else cs.onSurfaceVariant.copy(alpha = 0.35f)
+                            )
                         }
                         IconButton(onClick = onNewGame) {
                             Icon(Icons.Default.Refresh, contentDescription = "Nouvelle partie", tint = cs.onSurfaceVariant)

@@ -2,7 +2,19 @@ package com.jeu2048.app.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -26,6 +38,9 @@ fun MultiplayerScreen(
     p1Engine: GameEngine?,
     p2Engine: GameEngine?,
     themeIndex: Int,
+    timeLeft: Int?,
+    finished: Boolean,
+    winner: String?,
     onMoveP1: (Direction) -> Unit,
     onMoveP2: (Direction) -> Unit,
     onBack: () -> Unit
@@ -40,65 +55,104 @@ fun MultiplayerScreen(
     val p2ScoreState = p2Engine?.score?.collectAsState(initial = 0) ?: remember { mutableStateOf(0) }
 
     val tileThemeIndex = if (themeIndex == 3) 2 else if (themeIndex == 2) 1 else 0
+    val timeStr = timeLeft?.let {
+        val m = it / 60
+        val s = it % 60
+        String.format("%02d:%02d", m, s)
+    }
 
-    Column(
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
             .background(cs.background)
+            .safeDrawingPadding()
     ) {
-        // --- Joueur 2 (Haut, inversé) ---
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .graphicsLayer(rotationZ = 180f) // Inversé pour le face à face
-                .pointerInput(Unit) {
-                    detectMultiplayerDrag { onMoveP2(it) }
-                }
-                .padding(16.dp)
-        ) {
-            PlayerArea(
-                label = "Joueur 2",
-                score = p2ScoreState.value,
-                grid = p2GridState.value,
-                tileThemeIndex = tileThemeIndex,
-                cs = cs
-            )
-        }
+        val barHeight = 44.dp
+        val areaHeight = (maxHeight - barHeight).coerceAtLeast(0.dp) / 2
 
-        // --- Ligne de séparation / Menu ---
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color(0xFF8F7A66))
-                .padding(vertical = 4.dp),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+        Column(modifier = Modifier.fillMaxSize()) {
+            // --- Joueur 2 (Haut, inversé) ---
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(areaHeight)
+                    .graphicsLayer(rotationZ = 180f)
+                    .pointerInput(Unit) { detectMultiplayerDrag { onMoveP2(it) } }
+                    .padding(16.dp)
+            ) {
+                PlayerArea(
+                    label = "Joueur 2",
+                    score = p2ScoreState.value,
+                    grid = p2GridState.value,
+                    tileThemeIndex = tileThemeIndex,
+                    cs = cs
+                )
             }
-            Text("MODE MULTIJOUEUR", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 14.sp)
-        }
 
-        // --- Joueur 1 (Bas) ---
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .pointerInput(Unit) {
-                    detectMultiplayerDrag { onMoveP1(it) }
+            // --- Barre centrale ---
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(barHeight)
+                    .background(cs.primary)
+                    .padding(horizontal = 8.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onBack) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = cs.onPrimary)
                 }
-                .padding(16.dp)
-        ) {
-            PlayerArea(
-                label = "Joueur 1",
-                score = p1ScoreState.value,
-                grid = p1GridState.value,
-                tileThemeIndex = tileThemeIndex,
-                cs = cs
-            )
+                Text("MODE MULTIJOUEUR", color = cs.onPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                Spacer(Modifier.width(12.dp))
+                Text(
+                    timeStr ?: "Jusqu’à 2048",
+                    color = cs.onPrimary.copy(alpha = if (timeStr != null) 1f else 0.85f),
+                    fontWeight = if (timeStr != null) FontWeight.Bold else FontWeight.Medium,
+                    fontSize = 14.sp
+                )
+            }
+
+            // --- Joueur 1 (Bas) ---
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(areaHeight)
+                    .pointerInput(Unit) { detectMultiplayerDrag { onMoveP1(it) } }
+                    .padding(16.dp)
+            ) {
+                PlayerArea(
+                    label = "Joueur 1",
+                    score = p1ScoreState.value,
+                    grid = p1GridState.value,
+                    tileThemeIndex = tileThemeIndex,
+                    cs = cs
+                )
+            }
         }
+    }
+
+    if (finished) {
+        val s1 = p1ScoreState.value
+        val s2 = p2ScoreState.value
+        AlertDialog(
+            onDismissRequest = onBack,
+            title = { Text("Partie terminée", fontWeight = FontWeight.Bold) },
+            text = {
+                Text(
+                    buildString {
+                        append("Joueur 1 : $s1\n")
+                        append("Joueur 2 : $s2\n\n")
+                        append("Vainqueur : ${winner ?: "—"}")
+                    }
+                )
+            },
+            containerColor = cs.surface,
+            tonalElevation = 8.dp,
+            shape = RoundedCornerShape(20.dp),
+            confirmButton = {
+                Button(onClick = onBack, shape = RoundedCornerShape(14.dp)) { Text("Retour") }
+            }
+        )
     }
 }
 
@@ -127,21 +181,29 @@ private fun PlayerArea(
             }
         }
         Spacer(Modifier.height(8.dp))
-        Box(
+        BoxWithConstraints(
             modifier = Modifier
-                .size(240.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(cs.surface)
-                .padding(4.dp)
+                .fillMaxWidth()
+                .weight(1f),
+            contentAlignment = Alignment.TopCenter
         ) {
-            GameGrid(
-                grid = grid,
-                tileThemeIndex = tileThemeIndex,
-                animationsEnabled = true,
-                lastDirection = null,
-                highlightedRow = null,
-                highlightedCol = null
-            )
+            val side = minOf(maxWidth, maxHeight).coerceAtLeast(0.dp)
+            Box(
+                modifier = Modifier
+                    .size(side)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(cs.surface)
+                    .padding(4.dp)
+            ) {
+                GameGrid(
+                    grid = grid,
+                    tileThemeIndex = tileThemeIndex,
+                    animationsEnabled = true,
+                    lastDirection = null,
+                    highlightedRow = null,
+                    highlightedCol = null
+                )
+            }
         }
     }
 }

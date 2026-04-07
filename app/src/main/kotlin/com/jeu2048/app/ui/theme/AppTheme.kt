@@ -13,17 +13,18 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF6750A4),
-    onPrimary = Color.White,
-    primaryContainer = Color(0xFFEADDFF),
-    onPrimaryContainer = Color(0xFF21005D),
-    background = Color(0xFFF8F5F0),
-    onBackground = Color(0xFF1C1B1F),
-    surface = Color(0xFFF8F5F0),
-    onSurface = Color(0xFF1C1B1F),
-    surfaceVariant = Color(0xFFE7E0EC),
-    onSurfaceVariant = Color(0xFF49454F),
-    outline = Color(0xFF79747E)
+    // Palette "2048 classique" (beige + brun)
+    primary = Color(0xFF8F7A66),
+    onPrimary = Color(0xFFF9F6F2),
+    primaryContainer = Color(0xFFD7CCC2),
+    onPrimaryContainer = Color(0xFF3E2723),
+    background = Color(0xFFFAF8EF),
+    onBackground = Color(0xFF3E2723),
+    surface = Color(0xFFF3EFE6),
+    onSurface = Color(0xFF3E2723),
+    surfaceVariant = Color(0xFFEDE6DC),
+    onSurfaceVariant = Color(0xFF5D4037),
+    outline = Color(0xFFBCAAA4)
 )
 
 private val DarkColorScheme = darkColorScheme(
@@ -74,6 +75,7 @@ fun Jeu2048Theme(
             try {
                 val ctx = view.context
                 if (ctx is Activity) {
+                    @Suppress("DEPRECATION")
                     ctx.window.statusBarColor = colorScheme.surface.toArgb()
                     WindowCompat.getInsetsController(ctx.window, view).apply {
                         setAppearanceLightStatusBars(!darkTheme)

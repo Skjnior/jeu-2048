@@ -35,7 +35,6 @@ import java.util.Locale
 @Composable
 fun ScoresScreen(
     scores: List<ScoreEntity>,
-    themeIndex: Int,
     onBack: () -> Unit
 ) {
     val cs = MaterialTheme.colorScheme

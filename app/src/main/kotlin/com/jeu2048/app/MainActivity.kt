@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -28,6 +29,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.NavHostController
@@ -79,7 +81,7 @@ fun AppNav(viewModel: GameViewModel) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val settings by viewModel.settings.collectAsState()
-    val engine by viewModel.currentEngine.collectAsState()
+    val currentEngine by viewModel.currentEngine.collectAsState()
     val topScores by viewModel.topScores.collectAsState()
 
     var showWinDialog by remember { androidx.compose.runtime.mutableStateOf(false) }
@@ -97,7 +99,7 @@ fun AppNav(viewModel: GameViewModel) {
         ) {
             composable("game") {
                 GameScreen(
-                    engine = engine,
+                    engine = currentEngine,
                     themeIndex = settings.theme,
                     animationsEnabled = settings.animations,
                     canUndo = viewModel.canUndo(),
@@ -133,9 +135,13 @@ fun AppNav(viewModel: GameViewModel) {
                         }
                     },
                     onOpenScores = { navController.navigate("scores") },
-                    onOpenMultiplayer = { 
-                        viewModel.startMultiplayer()
-                        navController.navigate("multiplayer") 
+                    onOpenMultiplayerTimed = {
+                        viewModel.startMultiplayer(timed = true)
+                        navController.navigate("multiplayer")
+                    },
+                    onOpenMultiplayerClassic = {
+                        viewModel.startMultiplayer(timed = false)
+                        navController.navigate("multiplayer")
                     },
                     onOpenChallenge = {
                         viewModel.startDailyChallenge()
@@ -148,41 +154,56 @@ fun AppNav(viewModel: GameViewModel) {
             composable("scores") {
                 ScoresScreen(
                     scores = topScores,
-                    themeIndex = settings.theme,
                     onBack = { navController.popBackStack() }
                 )
             }
             composable("multiplayer") {
                 val p1Engine by viewModel.player1Engine.collectAsState()
                 val p2Engine by viewModel.player2Engine.collectAsState()
+                val mpTimeLeft by viewModel.multiplayerTimeLeft.collectAsState()
+                val mpFinished by viewModel.multiplayerFinished.collectAsState()
+                val mpWinner by viewModel.multiplayerWinner.collectAsState()
                 MultiplayerScreen(
                     p1Engine = p1Engine,
                     p2Engine = p2Engine,
                     themeIndex = settings.theme,
+                    timeLeft = mpTimeLeft,
+                    finished = mpFinished,
+                    winner = mpWinner,
                     onMoveP1 = { viewModel.movePlayer1(it) },
                     onMoveP2 = { viewModel.movePlayer2(it) },
                     onBack = { navController.popBackStack() }
                 )
             }
             composable("challenge") {
-                val engine by viewModel.challengeEngine.collectAsState()
+                val challengeEngine by viewModel.challengeEngine.collectAsState()
                 val timeLeft by viewModel.timeLeft.collectAsState()
+                val target by viewModel.challengeTargetScore.collectAsState()
+                val finished by viewModel.challengeFinished.collectAsState()
+                val success by viewModel.challengeSuccess.collectAsState()
                 ChallengeScreen(
-                    engine = engine,
+                    engine = challengeEngine,
                     timeLeft = timeLeft,
+                    targetScore = target,
+                    finished = finished,
+                    success = success,
                     themeIndex = settings.theme,
-                    onMove = { engine?.move(it) },
-                    onBack = { navController.popBackStack() }
+                    onMove = { challengeEngine?.move(it) },
+                    onBack = { navController.popBackStack() },
+                    onRetry = { viewModel.startDailyChallenge() }
                 )
             }
         }
     }
 
     if (showWinDialog) {
+        val cs = MaterialTheme.colorScheme
         AlertDialog(
             onDismissRequest = { showWinDialog = false },
-            title = { Text("Vous avez gagné !") },
+            title = { Text("Victoire !") },
             text = { Text("Vous avez atteint la tuile 2048. Continuer ou nouvelle partie ?") },
+            containerColor = cs.surface,
+            tonalElevation = 8.dp,
             confirmButton = {
                 Button(onClick = {
                     viewModel.acceptWin()
@@ -190,7 +211,7 @@ fun AppNav(viewModel: GameViewModel) {
                 }) { Text("Continuer") }
             },
             dismissButton = {
-                Button(onClick = {
+                TextButton(onClick = {
                     viewModel.startNewGame()
                     showWinDialog = false
                 }) { Text("Nouvelle partie") }
@@ -198,10 +219,13 @@ fun AppNav(viewModel: GameViewModel) {
         )
     }
     if (showGameOverDialog) {
+        val cs = MaterialTheme.colorScheme
         AlertDialog(
             onDismissRequest = { showGameOverDialog = false },
             title = { Text("Game Over") },
             text = { Text("Plus aucun mouvement possible.") },
+            containerColor = cs.surface,
+            tonalElevation = 8.dp,
             confirmButton = {
                 Button(onClick = {
                     viewModel.startNewGame()
@@ -209,7 +233,7 @@ fun AppNav(viewModel: GameViewModel) {
                 }) { Text("Réessayer") }
             },
             dismissButton = {
-                Button(onClick = {
+                TextButton(onClick = {
                     viewModel.shareScore(null)
                     showGameOverDialog = false
                 }) { Text("Partager le score") }
@@ -223,7 +247,7 @@ fun AppNav(viewModel: GameViewModel) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBarBack(navController: NavHostController, themeIndex: Int) {
+private fun TopBarBack(navController: NavHostController) {
     TopAppBar(
         title = { },
         navigationIcon = {

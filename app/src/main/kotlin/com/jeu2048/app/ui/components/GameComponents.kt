@@ -1,8 +1,6 @@
 package com.jeu2048.app.ui.components
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -94,11 +92,6 @@ fun TileCell(
         targetValue = tileColor(value, tileThemeIndex),
         animationSpec = if (animationsEnabled) tween(150) else tween(0),
         label = "tileColor"
-    )
-    val scale by animateFloatAsState(
-        targetValue = if (value > 0 && animationsEnabled) 1f else 0.8f,
-        animationSpec = spring(dampingRatio = 0.6f),
-        label = "scale"
     )
     val textColor = textColorForTile(value, tileThemeIndex)
     val density = LocalDensity.current
