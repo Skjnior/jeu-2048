@@ -91,6 +91,15 @@ class GameEngine(private val gridSize: Int = 4) {
     }
 
     /**
+     * Démarre une partie avec un générateur pseudo-aléatoire fixé par [seed].
+     * Utilisé pour le défi quotidien : même date → même séquence de tuiles.
+     */
+    fun startSeededGame(seed: Long) {
+        random = Random(seed)
+        startNewGame()
+    }
+
+    /**
      * 🔄 Restaure une partie sauvegardée
      */
     fun restoreGame(grid: Array<IntArray>, score: Int, best: Int, hasWon: Boolean) {
